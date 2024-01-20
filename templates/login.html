@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+
+<form action="/login" method="post" class="form-contact">
+    {{ form.hidden_tag() }}
+
+<p>{{ form.e_mail.label() }} </p> 
+{% if form.e_mail.errors %}
+    {{ form.e_mail(class="invalid") }}
+<span class="invalid-feedback">
+    {% for e in form.e_mail.errors %}
+    {{ e }}
+    {% endfor %}
+</span>
+{% else %}
+    {{ form.e_mail() }}
+{% endif %}
+
+<p>{{ form.psw.label() }} </p> 
+{% if form.psw.errors %}
+    {{ form.psw(class="invalid") }}
+<span class="invalid-feedback">
+    {% for e in form.psw.errors %}
+    {{ e }}
+    {% endfor %}
+</span>
+{% else %}
+    {{ form.psw() }}
+{% endif %}
+
+<p>{{ form.remember() }}{{ form.remember.label() }}</p>
+<p>{{ form.submit() }}</p>
+
+{% for msg in get_flashed_messages() %}
+<p>{{ msg }}</p>
+{% endfor %}
+</form>
+
+{% endblock %}
+{% block footer %}
+{{ super() }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+
+<form action="/suggestions" method="post" class="form-contact">
+{{ form.hidden_tag() }}
+
+<p>{{ form.username.label() }} </p> 
+{% if form.username.errors %}
+    {{ form.username(class="invalid") }}
+<span class="invalid-feedback">
+    {% for e in form.username.errors %}
+    {{ e }}
+    {% endfor %}
+</span>
+{% else %}
+    {{ form.username() }}
+{% endif %}
+
+<p>{{ form.e_mail.label() }} </p> 
+{% if form.e_mail.errors %}
+    {{ form.e_mail(class="invalid") }}
+<span class="invalid-feedback">
+    {% for e in form.e_mail.errors %}
+    {{ e }}
+    {% endfor %}
+</span>
+{% else %}
+    {{ form.e_mail() }}
+{% endif %}
+
+<p>{{ form.suggestion.label() }}</p> {{ form.suggestion() }}
+<p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
+{% block footer %}
+{{ super() }}
+{% endblock %}
