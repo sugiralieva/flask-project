@@ -50,7 +50,7 @@ menu = [{'name': 'Главная', 'url': '/'},
         {'name': 'Рассылка', 'url': 'feedback'}]
 
 
-TOKEN = '6372785791:AAGPWCjzc8cSiARhuMBUwsbVumjuf-uPCj0'
+TOKEN = 'token
 
 bot = telebot.TeleBot(TOKEN, parse_mode='MarkDown')
 
